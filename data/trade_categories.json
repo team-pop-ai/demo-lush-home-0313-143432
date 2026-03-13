@@ -1,0 +1,32 @@
+[
+  {
+    "trade_name": "electrical",
+    "keywords": ["wiring", "outlets", "panels", "lighting", "circuits", "electrical"],
+    "typical_timing": "mid-construction",
+    "avg_quote_turnaround": "3 days"
+  },
+  {
+    "trade_name": "plumbing",
+    "keywords": ["pipes", "fixtures", "water", "drain", "bathroom", "kitchen plumbing"],
+    "typical_timing": "mid-construction",
+    "avg_quote_turnaround": "2 days"
+  },
+  {
+    "trade_name": "hvac",
+    "keywords": ["heating", "cooling", "ductwork", "furnace", "air conditioning", "ventilation"],
+    "typical_timing": "mid-construction",
+    "avg_quote_turnaround": "4 days"
+  },
+  {
+    "trade_name": "concrete",
+    "keywords": ["foundation", "slab", "concrete", "footings", "driveway", "patio"],
+    "typical_timing": "early",
+    "avg_quote_turnaround": "5 days"
+  },
+  {
+    "trade_name": "framing",
+    "keywords": ["lumber", "framing", "walls", "structure", "beams", "joists"],
+    "typical_timing": "early",
+    "avg_quote_turnaround": "3 days"
+  }
+]

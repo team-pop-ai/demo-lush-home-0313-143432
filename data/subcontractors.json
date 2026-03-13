@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Elite Electrical LLC",
+    "trade": "electrical",
+    "email": "quotes@eliteelectrical.com",
+    "phone": "(555) 234-5678",
+    "preferred_status": "preferred",
+    "avg_response_time": "2 days",
+    "recent_quotes": 12,
+    "rating": 4.8
+  },
+  {
+    "name": "Premier Plumbing Co",
+    "trade": "plumbing",
+    "email": "bids@premierplumbing.net",
+    "phone": "(555) 345-6789",
+    "preferred_status": "preferred",
+    "avg_response_time": "1 day",
+    "recent_quotes": 18,
+    "rating": 4.9
+  },
+  {
+    "name": "Apex Concrete Works",
+    "trade": "concrete",
+    "email": "estimates@apexconcrete.com",
+    "phone": "(555) 456-7890",
+    "preferred_status": "standard",
+    "avg_response_time": "3 days",
+    "recent_quotes": 8,
+    "rating": 4.6
+  },
+  {
+    "name": "Reliable HVAC Services",
+    "trade": "hvac",
+    "email": "quotes@reliablehvac.org",
+    "phone": "(555) 567-8901",
+    "preferred_status": "preferred",
+    "avg_response_time": "2 days",
+    "recent_quotes": 15,
+    "rating": 4.7
+  },
+  {
+    "name": "Master Framers Inc",
+    "trade": "framing",
+    "email": "jobs@masterframers.com",
+    "phone": "(555) 678-9012",
+    "preferred_status": "standard",
+    "avg_response_time": "4 days",
+    "recent_quotes": 6,
+    "rating": 4.5
+  }
+]

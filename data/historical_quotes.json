@@ -1,0 +1,47 @@
+[
+  {
+    "project_id": "PROJ-001",
+    "trade": "electrical",
+    "subcontractor": "Elite Electrical LLC",
+    "quote_amount": 12500,
+    "date": "2024-11-15",
+    "sqft_rate": 8.50,
+    "project_sqft": 1470
+  },
+  {
+    "project_id": "PROJ-001",
+    "trade": "plumbing",
+    "subcontractor": "Premier Plumbing Co",
+    "quote_amount": 9800,
+    "date": "2024-11-16",
+    "sqft_rate": 6.67,
+    "project_sqft": 1470
+  },
+  {
+    "project_id": "PROJ-002",
+    "trade": "hvac",
+    "subcontractor": "Reliable HVAC Services",
+    "quote_amount": 18400,
+    "date": "2024-11-10",
+    "sqft_rate": 11.20,
+    "project_sqft": 1643
+  },
+  {
+    "project_id": "PROJ-003",
+    "trade": "concrete",
+    "subcontractor": "Apex Concrete Works",
+    "quote_amount": 15600,
+    "date": "2024-11-08",
+    "sqft_rate": 14.50,
+    "project_sqft": 1076
+  },
+  {
+    "project_id": "PROJ-004",
+    "trade": "framing",
+    "subcontractor": "Master Framers Inc",
+    "quote_amount": 22100,
+    "date": "2024-11-05",
+    "sqft_rate": 12.80,
+    "project_sqft": 1727
+  }
+]

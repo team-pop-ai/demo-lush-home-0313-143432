@@ -1,0 +1,32 @@
+[
+  {
+    "project_id": "PROJ-008",
+    "project_address": "1456 Maple Drive, Suite A",
+    "scope": "Office renovation - new conference rooms, updated lighting",
+    "trades": ["electrical", "drywall", "painting", "flooring"],
+    "outstanding_rfps": 12,
+    "quotes_received": 8,
+    "status": "quotes_received",
+    "due_date": "2024-12-15"
+  },
+  {
+    "project_id": "PROJ-009",
+    "project_address": "892 Pine Street",
+    "scope": "Kitchen and bathroom remodel - complete gut renovation",
+    "trades": ["plumbing", "electrical", "tile", "cabinetry", "countertops"],
+    "outstanding_rfps": 15,
+    "quotes_received": 3,
+    "status": "rfps_sent",
+    "due_date": "2024-12-20"
+  },
+  {
+    "project_id": "PROJ-010",
+    "project_address": "2341 Oak Avenue",
+    "scope": "New construction - single family home foundation to finish",
+    "trades": ["excavation", "concrete", "framing", "roofing", "electrical", "plumbing", "hvac", "siding"],
+    "outstanding_rfps": 24,
+    "quotes_received": 12,
+    "status": "rfps_sent",
+    "due_date": "2025-01-10"
+  }
+]

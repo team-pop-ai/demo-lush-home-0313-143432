@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Quote Dashboard - Lush Home Construction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div style="font-size:18px;">🏗️ Lush Home Construction - Project Quote Dashboard</div>
+        <div style="margin-left:auto;">
+            <a href="/" class="btn-secondary">Back to Teams</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Project Quote Dashboard</h1>
+        
+        <!-- Summary Stats -->
+        <div class="metrics-row">
+            <div class="card">
+                <div class="section-label">Total Projects</div>
+                <div style="font-size:32px; font-family:'Roboto',sans-serif; font-weight:700; color:#141413;">{{ stats.total_projects }}</div>
+                <div style="font-size:13px; color:#b0aea5; margin-top:4px;">active this month</div>
+            </div>
+            <div class="card">
+                <div class="section-label">Pending Quotes</div>
+                <div style="font-size:32px; font-family:'Roboto',sans-serif; font-weight:700; color:#d97757;">{{ stats.pending_quotes }}</div>
+                <div style="font-size:13px; color:#b0aea5; margin-top:4px;">awaiting responses</div>
+            </div>
+            <div class="card">
+                <div class="section-label">Completed</div>
+                <div style="font-size:32px; font-family:'Roboto',sans-serif; font-weight:700; color:#788c5d;">{{ stats.completed_quotes }}</div>
+                <div style="font-size:13px; color:#b0aea5; margin-top:4px;">ready for review</div>
+            </div>
+            <div class="card">
+                <div class="section-label">Avg Response Time</div>
+                <div style="font-size:32px; font-family:'Roboto',sans-serif; font-weight:700; color:#141413;">{{ stats.avg_response_time }}</div>
+                <div style="font-size:13px; color:#b0aea5; margin-top:4px;">industry: 12 days</div>
+            </div>
+        </div>
+
+        <!-- Project Table -->
+        <div class="section-label">All Projects</div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Status</th>
+                        <th>Trades</th>
+                        <th>RFPs Sent</th>
+                        <th>Quotes Received</th>
+                        <th>Last Activity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for project in projects %}
+                    <tr>
+                        <td>
+                            <div style="font-family:'Roboto',sans-serif; font-weight:600;">{{ project.address or project.project_address }}</div>
+                            <div style="font-size:13px; color:#b0aea5;">{{ project.get('description', project.get('scope', 'Renovation project'))[:60] }}...</div>
+                        </td>
+                        <td>
+                            {% if project.get('status') == 'rfps_sent' %}
+                                <span class="badge badge-orange">RFPs Sent</span>
+                            {% elif project.get('status') == 'analyzing' %}
+                                <span class="badge badge-blue">Analyzing</span>
+                            {% elif project.get('status') == 'quotes_received' %}
+                                <span class="badge badge-green">Quotes In</span>
+                            {% else %}
+                                <span class="badge badge-gray">Planning</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span style="font-family:monospace; font-size:13px;">
+                                {{ project.get('trades_needed', project.get('trades', [])) | length if project.get('trades_needed') or project.get('trades') else 'TBD' }}
+                            </span>
+                        </td>
+                        <td>
+                            <span style="font-family:monospace; font-size:13px;">{{ project.get('rfps_sent', project.get('outstanding_rfps', 0)) }}</span>
+                        </td>
+                        <td>
+                            <span style="font-family:monospace; font-size:13px;">{{ project.get('quotes_received', 0) }}</span>
+                        </td>
+                        <td>
+                            <span style="font-size:13px; color:#b0aea5;">2 hours ago</span>
+                        </td>
+                        <td>
+                            <button class="btn-secondary" onclick="viewProject('{{ project.get('id', project.get('project_id')) }}')">View</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Quote Analysis Section -->
+        <div style="margin-top:40px;">
+            <div class="section-label">Test Quote Analysis</div>
+            <div class="card">
+                <div class="two-col">
+                    <div>
+                        <div class="field-group">
+                            <label class="field-label">Subcontractor</label>
+                            <input type="text" id="quoteSubcontractor" placeholder="Elite Electrical LLC">
+                        </div>
+                        <div class="field-group">
+                            <label class="field-label">Project ID</label>
+                            <input type="text" id="quoteProjectId" placeholder="Enter project ID">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="field-group">
+                            <label class="field-label">Quote Text</label>
+                            <textarea id="quoteText" rows="6" placeholder="Paste the subcontractor's quote here for AI analysis..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="analyzeQuote()" class="btn-primary" id="analyzeBtn">
+                    <span id="analyzeText">Analyze Quote with AI</span>
+                    <span id="analyzeSpinner" style="display:none;">⏳ Analyzing...</span>
+                </button>
+                
+                <div id="quoteAnalysis" style="display:none; margin-top:20px;">
+                    <div class="section-label">AI Analysis Results</div>
+                    <div id="analysisResults"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

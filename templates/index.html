@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lush Home Construction - AI Quote Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <div style="font-size:18px;">🏗️ Lush Home Construction - AI Quote Manager</div>
+        <div style="margin-left:auto;">
+            <a href="/dashboard" class="btn-secondary">View Dashboard</a>
+        </div>
+    </header>
+
+    <div class="teams-layout">
+        <!-- Sidebar -->
+        <aside class="teams-sidebar">
+            <div class="section-label">Project Channels</div>
+            <div class="channel-list">
+                <div class="channel active">
+                    <span class="channel-icon">#</span>
+                    <span>new-projects</span>
+                    <span class="badge badge-orange">Live</span>
+                </div>
+                {% for project in active_projects %}
+                <div class="channel">
+                    <span class="channel-icon">#</span>
+                    <span>{{ project.address.split(',')[0].lower().replace(' ', '-') }}</span>
+                    <span class="badge badge-blue">{{ project.quotes_received }}/{{ project.outstanding_rfps }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="teams-main">
+            <div class="channel-header">
+                <h2># new-projects</h2>
+                <p>AI monitors this channel for new project posts and automatically handles RFP distribution</p>
+            </div>
+
+            <div class="messages-area" id="messages">
+                <div class="message">
+                    <div class="message-avatar">AI</div>
+                    <div class="message-content">
+                        <div class="message-author">Construction AI Assistant</div>
+                        <div class="message-time">System Online</div>
+                        <div class="message-text">
+                            👋 Monitoring channel for new project posts. I'll automatically:
+                            <ul>
+                                <li>Identify all trades needed from project descriptions</li>
+                                <li>Generate and send RFPs to preferred subcontractors</li>
+                                <li>Track responses and schedule follow-ups</li>
+                                <li>Analyze quotes for completeness and pricing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message">
+                    <div class="message-avatar">PM</div>
+                    <div class="message-content">
+                        <div class="message-author">Project Manager</div>
+                        <div class="message-time">30 min ago</div>
+                        <div class="message-text">
+                            New project just came in! Kitchen renovation at 1234 Oak Street. Complete gut job - removing walls, new electrical panel, plumbing relocation, hardwood floors throughout. Client wants high-end finishes. Timeline is 8 weeks start to finish.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message ai-response">
+                    <div class="message-avatar">AI</div>
+                    <div class="message-content">
+                        <div class="message-author">Construction AI Assistant</div>
+                        <div class="message-time">29 min ago</div>
+                        <div class="message-text">
+                            🤖 **Project Analysis Complete**
+                            <br><br>
+                            **Trades Identified:** electrical, plumbing, flooring, cabinetry, countertops, drywall, painting, permits
+                            <br><br>
+                            **RFPs Sent:** 24 emails to preferred subs across 8 trades
+                            <br><br>
+                            **Expected Responses:** 18-20 quotes by next Friday
+                            <br><br>
+                            <span class="badge badge-green">Automated ✓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Project Form -->
+            <div class="compose-area">
+                <form id="newProjectForm" class="compose-form">
+                    <div class="field-group">
+                        <label class="field-label">Project Address</label>
+                        <input type="text" id="projectAddress" placeholder="Enter project address" required>
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label">Project Description</label>
+                        <textarea id="projectDescription" rows="3" placeholder="Describe the project scope, timeline, and key requirements..." required></textarea>
+                    </div>
+                    <div class="compose-actions">
+                        <button type="submit" class="btn-primary">
+                            <span id="submitText">Post Project & Trigger AI</span>
+                            <span id="submitSpinner" style="display:none;">⏳ Processing...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="teams-right">
+            <div class="section-label">Live Activity</div>
+            <div class="activity-feed">
+                {% for activity in recent_activity %}
+                <div class="activity-item">
+                    <div class="activity-time">{{ activity.time }}</div>
+                    <div class="activity-message">{{ activity.message }}</div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <hr>
+
+            <div class="section-label">Quick Stats</div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Active RFPs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8.2</div>
+                    <div class="stat-label">Avg Response Days</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Response Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$47K</div>
+                    <div class="stat-label">Avg Project Value</div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
